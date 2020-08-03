@@ -7,17 +7,15 @@ variable "myip" { }
 
 variable "vpc_network_name" {}
 
-variable "region" {
-  default = "europe-west3"
-}
+variable "region" { }
 
 variable "zone" {
-  default = "europe-west3-a"
+  type = string
+  default = ""
 }
 
 variable "zones" {
   type = list(string)
-  default = []
   description = "Zones available in the selected region"
 }
 
