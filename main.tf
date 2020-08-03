@@ -3,7 +3,7 @@
 ##
 
 module "confluent-platform-network" {
-  source = "./confluent-platform-network"
+  source = "./modules/confluent-platform-network"
   name = var.name
   project = var.project
   credentials_file = var.credentials_file
@@ -12,7 +12,7 @@ module "confluent-platform-network" {
 }
 
 module "confluent-cluster" {
-  source = "./confluent-platform"
+  source = "./modules/confluent-platform"
   brokers = var.brokers
   zookeepers = var.zookeepers
   connects = var.connects
@@ -35,7 +35,7 @@ module "confluent-cluster" {
 }
 
 module "confluent-platform-control-center" {
-  source = "./confluent-platform-control-center"
+  source = "./modules/confluent-platform-control-center"
 
   name = var.name
   project = var.project
