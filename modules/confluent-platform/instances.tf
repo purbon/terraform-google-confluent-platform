@@ -37,7 +37,7 @@ resource "google_compute_instance" "broker" {
   count        = var.brokers
   machine_type = var.machine_types[var.environment]["broker"]
   tags         = [var.name, "kafka", "broker"]
-  zone         = var.zones[count.index]
+  zone         = element(var.zones, count.index)
 
   labels = {
     role = "broker"
@@ -75,7 +75,7 @@ resource "google_compute_instance" "zookeeper" {
   count        = var.zookeepers
   machine_type = var.machine_types[var.environment]["zookeeper"]
   tags         = [var.name, "kafka", "zookeeper"]
-  zone         = var.zones[count.index]
+  zone         = element(var.zones, count.index)
 
   labels = {
     role = "zookeeper"
@@ -114,7 +114,7 @@ resource "google_compute_instance" "connect" {
   count        = var.connects
   machine_type = var.machine_types[var.environment]["connect"]
   tags         = [var.name, "kafka", "connect"]
-  zone         = var.zones[count.index]
+  zone         = element(var.zones, count.index)
 
   labels = {
     role = "connect"
@@ -148,7 +148,7 @@ resource "google_compute_instance" "schema-registry" {
   count        = var.schema-registrys
   machine_type = var.machine_types[var.environment]["schema-registry"]
   tags         = [var.name, "kafka", "schema-registry"]
-  zone         = var.zones[count.index]
+  zone         = element(var.zones, count.index)
 
   labels = {
     role = "connect"

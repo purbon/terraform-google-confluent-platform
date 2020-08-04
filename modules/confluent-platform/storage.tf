@@ -28,7 +28,7 @@ resource "google_compute_disk" "broker" {
   name  = "${var.name}-broker-${count.index}-disk"
   count = var.brokers
   type  = var.broker-disk-type
-  zone  = var.zones[count.index]
+  zone  = element(var.zones, count.index)
   image = var.image_type
   labels = {
     environment = var.environment
@@ -48,7 +48,7 @@ resource "google_compute_disk" "zookeeper" {
   name  = "${var.name}-zookeeper-${count.index}-disk"
   count = var.zookeepers
   type  = var.zookeeper-disk-type
-  zone  = var.zones[count.index]
+  zone  = element(var.zones, count.index)
   image = var.image_type
   labels = {
     environment = var.environment
